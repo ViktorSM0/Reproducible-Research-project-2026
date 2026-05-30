@@ -1,0 +1,25 @@
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+
+def normalize_rows(matrix):
+    """
+    Ensure rows sum to 1 to represent true probability distributions.
+    Safely handles rows that sum to 0 by leaving them unchanged or
+    preventing division-by-zero crashes.
+    """
+    row_sums = matrix.sum(axis=1, keepdims=True)
+    row_sums[row_sums == 0] = 1.0  # Prevent division by zero
+    return matrix / row_sums
+
+def save_plot(filename, dpi=300):
+    """
+    saves plot to /output.
+    """
+    output_path = Path(__file__).resolve().parent / "output"
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    file_path = output_path / filename
+    plt.savefig(file_path, dpi=dpi, bbox_inches='tight')
+
+    print(f"Saved {filename} to: {file_path}")
