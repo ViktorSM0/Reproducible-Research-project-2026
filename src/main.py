@@ -1,13 +1,17 @@
 from protolang_simulation import ProtolanguageSimulation
 from adaptive_dynamics_simulation import AdaptiveDynamicsSimulation
 from word_formation_simulation  import WordFormationSimulation
+import numpy as np
 
 if __name__ == "__main__":
-    proto_experiment = ProtolanguageSimulation(n_pop=100, n_objects=5, n_signals=5, sample_size=12)
-    proto_experiment.run_simulation_and_plot(generations=50)
 
-    adaptive_experiment = AdaptiveDynamicsSimulation(alpha=2.5, n_objects=10, n_sounds=20)
-    adaptive_experiment.run_simulation_and_plot(total_mutations=50000)
+    np.random.seed(12)
 
-    sim = WordFormationSimulation(n_objects=100, epsilon=0.2)
-    sim.run_simulation_and_plot()
+    proto_simulation = ProtolanguageSimulation(n_pop=100, n_objects=5, n_signals=5, sample_size=12)
+    proto_simulation.run_simulation_and_plot(generations=50)
+
+    adaptive_simulation = AdaptiveDynamicsSimulation(alpha=2.5, n_objects=10, n_sounds=20)
+    adaptive_simulation.run_simulation_and_plot(total_mutations=10000)
+
+    word_formation_simulation = WordFormationSimulation(n_objects=100, epsilon=0.2)
+    word_formation_simulation.run_simulation_and_plot()
