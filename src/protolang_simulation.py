@@ -129,7 +129,7 @@ class ProtolanguageSimulation:
             ax.grid(True, linestyle='--', alpha=0.5)
             ax.set_title(title, fontsize=14)
 
+        plt.tight_layout()
         save_plot("emergence_of_protolanguage.png")
 
-        # plt.tight_layout()
         # plt.show()
