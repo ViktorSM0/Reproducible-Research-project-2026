@@ -29,7 +29,7 @@ def save_plot(filename, dpi=300):
     """
     saves plot to /output.
     """
-    output_path = Path(__file__).resolve().parent / "output"
+    output_path = Path(__file__).resolve().parent.parent / "output"
     output_path.mkdir(parents=True, exist_ok=True)
 
     file_path = output_path / filename
