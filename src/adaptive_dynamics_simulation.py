@@ -116,18 +116,34 @@ class AdaptiveDynamicsSimulation:
         save_plot(f"evolutionary_language_game_optimization_{self.n_objects}_{self.n_sounds}.png")
         # plt.show()
 
-        plt.figure(figsize=(10, 6))
-        sns.heatmap(self.P_res, annot=False, cmap='YlGnBu', cbar_kws={'label': 'Selection Probability'})
-        plt.title(f'Optimized Active Language Profile (Object: {self.n_objects} Sound: {self.n_sounds})')
-        plt.xlabel('Acoustic Spectrum Signal Channels')
-        plt.ylabel('Observed Objects')
-        save_plot(f"optimized_active_language_profile_{self.n_objects}_{self.n_sounds}.png")
-        # plt.show()
+        n_objects, n_sounds = self.P_res.shape
+        x, y = np.meshgrid(np.arange(n_sounds), np.arange(n_objects))
+        x_flat = x.flatten()
+        y_flat = y.flatten()
+        sizes_flat = self.P_res.flatten()
 
-        plt.figure(figsize=(10, 6))
-        sns.heatmap(self.U, cmap="Reds", cbar_kws={'label': 'Perception Probability'})
-        plt.title(f"Perception Matrix U (Object: {self.n_objects} Sound: {self.n_sounds})")
-        plt.xlabel("Perceived Sound")
-        plt.ylabel("Spoken Sound")
-        save_plot(f"perception_matrix_{self.n_objects}_{self.n_sounds}.png")
+        plt.figure(figsize=(12, 6))
+
+        scatter = plt.scatter(
+            x_flat,
+            y_flat,
+            s=sizes_flat * 1200,
+            c=sizes_flat,
+            cmap='YlGnBu',
+            alpha=0.75,
+            edgecolors='black'
+        )
+
+        plt.title(f'Optimized Active Language Profile (Object: {n_objects} Sound: {n_sounds})', fontsize=14)
+        plt.xlabel('Acoustic Spectrum Signal Channels', fontsize=12)
+        plt.ylabel('Observed Objects', fontsize=12)
+
+        plt.xticks(np.arange(n_sounds))
+        plt.yticks(np.arange(n_objects))
+
+        plt.colorbar(scatter, label='Selection Probability')
+        plt.grid(True, linestyle='--', alpha=0.3)
+
+        plt.tight_layout()
+        save_plot(f"optimized_active_language_profile_{self.n_objects}_{self.n_sounds}.png")
         # plt.show()
