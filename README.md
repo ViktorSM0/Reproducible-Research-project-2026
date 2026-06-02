@@ -55,7 +55,7 @@ docker pull timchen22/repro-project:latest
 ```bash
 docker run --rm \
   -v "$(pwd)/output:/app/output" \
-  timchen22/repro-report:latest
+  timchen22/repro-project:latest
 ```
 
 The container executes the simulation pipeline and generates all figures used in the report.
