@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from utils import *
+from src.utils import *
 
 class AdaptiveDynamicsSimulation:
     """
