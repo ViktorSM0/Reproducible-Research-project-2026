@@ -1,34 +1,31 @@
-# Use Python 3.11 as the base image
 FROM python:3.11-slim
 
-# All commands will run from /app
 WORKDIR /app
 
-# Install system packages:
-# - curl: needed to download Quarto
-# - git: often useful for reproducible projects
 RUN apt-get update && apt-get install -y \
     curl \
     git \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy the entire repository into the container
 COPY . .
 
-# Install Python dependencies from requirements.txt
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
-# Download and install Quarto
-RUN curl -LO https://quarto.org/download/latest/quarto-linux-amd64.deb && \
-    dpkg -i quarto-linux-amd64.deb && \
-    rm quarto-linux-amd64.deb
+ARG TARGETARCH
 
-# Create folder for generated outputs
-RUN mkdir -p output
+RUN case "${TARGETARCH}" in \
+      amd64) QUARTO_ARCH="amd64" ;; \
+      arm64) QUARTO_ARCH="arm64" ;; \
+      *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
+    esac && \
+    curl -LO "https://quarto.org/download/latest/quarto-linux-${QUARTO_ARCH}.deb" && \
+    apt-get update && \
+    apt-get install -y "./quarto-linux-${QUARTO_ARCH}.deb" && \
+    rm "quarto-linux-${QUARTO_ARCH}.deb" && \
+    rm -rf /var/lib/apt/lists/*
 
-# When the container starts:
-# 1. Run the simulations
-# 2. Render the notebook as an HTML report
-# 3. Move the report into output/
-CMD ["bash", "-c", "set -e && python -m src.main && quarto render notebook/report.ipynb --to html --embed-resources && cp /app/notebook/report.html /app/output/report.html"]
+RUN mkdir -p /app/output
+
+CMD ["bash", "-lc", "set -euxo pipefail; python -m src.main; quarto render /app/notebook/report.ipynb --to html --embed-resources --output-dir /app/output"]

@@ -47,13 +47,15 @@ The simulations generate figures illustrating the emergence and evolution of lin
 ### Pull the Docker Image
 
 ```bash
-docker pull viktorsm0/repro-project:latest
+docker pull timchen22/repro-project:latest
 ```
 
 ### Run the Container
 
 ```bash
-docker run --rm viktorsm0/repro-project:latest
+docker run --rm \
+  -v "$(pwd)/output:/app/output" \
+  timchen22/repro-report:latest
 ```
 
 The container executes the simulation pipeline and generates all figures used in the report.
