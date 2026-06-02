@@ -3,34 +3,29 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import os
-import sys
-sys.path.insert(0, os.path.abspath("../.."))
-
-
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Replication of paper "The Evolution of Language (Nowak & Krakauer, 1999)"'
-copyright = '2026, Zeping Chen, Victor Senkiv, Zihua Lai'
-author = 'Zeping Chen, Victor Senkiv, Zihua Lai'
-release = '0.1'
+project = 'Reproducing the article on "The evolution of human language" by Nowak and Krakauer (1999)'
+copyright = '2026, Viktor Senkiv, Zeping Chen, Zihua Lai'
+author = 'Viktor Senkiv, Zeping Chen, Zihua Lai'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..'))
 
 extensions = [
-"sphinx.ext.autodoc",
-"sphinx.ext.viewcode",
-"sphinx.ext.napoleon",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode"
 ]
 
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'alabaster'
 html_static_path = ['_static']

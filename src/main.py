@@ -1,6 +1,6 @@
-from protolang_simulation import ProtolanguageSimulation
-from adaptive_dynamics_simulation import AdaptiveDynamicsSimulation
-from word_formation_simulation  import WordFormationSimulation
+from src.protolang_simulation import ProtolanguageSimulation
+from src.adaptive_dynamics_simulation import AdaptiveDynamicsSimulation
+from src.word_formation_simulation  import WordFormationSimulation
 import numpy as np
 
 if __name__ == "__main__":

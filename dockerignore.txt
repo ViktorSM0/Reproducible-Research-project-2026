@@ -1,0 +1,72 @@
+# Git internals — never bake into image layers
+.git
+.gitattributes
+.github/
+
+# Dev container config
+.devcontainer/
+
+# Dependencies
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML / AI artifacts
+checkpoints/
+wandb/
+mlruns/
+*.h5
+*.ckpt
+
+# Spark / Airflow / data systems
+logs/
+spark-warehouse/
+metastore_db/
+
+# Build artifacts
+dist/
+build/
+*.o
+*.out
+target/
+
+# Secrets & local config — critical to exclude
+.env
+.env.*
+.envrc
+*.pem
+*.key
+*.cert
+secrets/
+
+# Editor & OS noise
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Test & coverage output
+coverage/
+htmlcov/
+.nyc_output/
+
+# Logs & temporary files
+*.log
+tmp/
+temp/
