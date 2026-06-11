@@ -12,6 +12,7 @@ class ProtolanguageSimulation:
     language by sampling finite communication patterns from their parents, introducing
     transmission noise. This demonstrates how a population can naturally self-organize
     and converge on a shared, cohesive protolanguage without central authority.
+    
     """
     def __init__(self, n_pop=100, n_objects=5, n_signals=5, sample_size=15):
         self.n_pop = n_pop
