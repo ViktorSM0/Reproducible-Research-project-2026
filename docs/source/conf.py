@@ -6,21 +6,26 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Reproducing the article on "The evolution of human language" by Nowak and Krakauer (1999)'
+project = 'Reproducible research project documentation'
 copyright = '2026, Viktor Senkiv, Zeping Chen, Zihua Lai'
 author = 'Viktor Senkiv, Zeping Chen, Zihua Lai'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
 import os
 import sys
+
 sys.path.insert(0, os.path.abspath('../..'))
 
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
-    "sphinx.ext.viewcode"
+    "sphinx.ext.viewcode",
 ]
+
+templates_path = ['_templates']
+exclude_patterns = []
 
 
 

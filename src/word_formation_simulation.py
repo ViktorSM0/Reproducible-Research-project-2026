@@ -11,6 +11,7 @@ class WordFormationSimulation:
       - 1: Protolanguage error limits (1 sound = 1 object)
       - 2: Word formation without context (Word length l=2)
       - 3: Word formation with contextual lexicon matching
+
     """
     def __init__(self, n_objects, epsilon):
         self.n_objects = n_objects
@@ -45,6 +46,7 @@ class WordFormationSimulation:
         """
         Adapts word similarity penalties dynamically based on how much of the
         total word space (m^2) is utilized by active lexicon words.
+        
         """
         if active_lexicon_size == 0:
             return 0.0

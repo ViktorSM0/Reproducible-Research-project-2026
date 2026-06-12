@@ -12,6 +12,7 @@ class AdaptiveDynamicsSimulation:
     Mutants only overthrow the population if they successfully maximize communication efficiency by pushing
     acoustic signals as far apart as possible, highlighting the mathematical "Error Limit"
     inherent to non-combinatorial systems.
+    
     """
     def __init__(self, alpha=2.5, n_objects=8, n_sounds=16):
         self.alpha = alpha
