@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from src.utils import *
+from utils import *
 
 class AdaptiveDynamicsSimulation:
     """
@@ -15,6 +15,7 @@ class AdaptiveDynamicsSimulation:
     
     """
     def __init__(self, alpha=2.5, n_objects=8, n_sounds=16):
+        
         self.alpha = alpha
         self.n_objects = n_objects
         self.n_sounds = n_sounds
@@ -82,7 +83,7 @@ class AdaptiveDynamicsSimulation:
 
         return current_efficiency
 
-    def run_simulation_and_plot(self, total_mutations=30000):
+    def run_simulation_and_plot(self, total_mutations=30000, plot=False):
         efficiency_history = []
         invasion_points = []
 
@@ -115,7 +116,8 @@ class AdaptiveDynamicsSimulation:
         plt.legend(loc='lower right')
         plt.grid(True, alpha=0.3)
         save_plot(f"evolutionary_language_game_optimization_{self.n_objects}_{self.n_sounds}.png")
-        # plt.show()
+        if plot == True:
+            plt.show()
 
         n_objects, n_sounds = self.P_res.shape
         x, y = np.meshgrid(np.arange(n_sounds), np.arange(n_objects))
@@ -147,4 +149,5 @@ class AdaptiveDynamicsSimulation:
 
         plt.tight_layout()
         save_plot(f"optimized_active_language_profile_{self.n_objects}_{self.n_sounds}.png")
-        # plt.show()
+        if plot == True:
+            plt.show()
