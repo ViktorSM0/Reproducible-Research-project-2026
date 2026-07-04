@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from src.utils import *
+from utils import *
 
 class ProtolanguageSimulation:
     """
@@ -15,6 +15,7 @@ class ProtolanguageSimulation:
     
     """
     def __init__(self, n_pop=100, n_objects=5, n_signals=5, sample_size=15):
+    
         self.n_pop = n_pop
         self.n_objects = n_objects
         self.n_signals = n_signals
@@ -72,7 +73,7 @@ class ProtolanguageSimulation:
         self.population = next_gen
         return avg_fitness
 
-    def run_simulation_and_plot(self, generations=30):
+    def run_simulation_and_plot(self, generations=30, plot=False):
 
         fitness_history = []
         coherence_history = []
@@ -108,7 +109,8 @@ class ProtolanguageSimulation:
 
         save_plot("protolanguage_fitness_coherence.png")
 
-        # plt.show()
+        if plot == True:
+            plt.show()
 
         fig, axes = plt.subplots(3, 2, figsize=(10, 12))
         axes = axes.flatten()
@@ -133,4 +135,5 @@ class ProtolanguageSimulation:
         plt.tight_layout()
         save_plot("emergence_of_protolanguage.png")
 
-        # plt.show()
+        if plot == True:
+            plt.show()

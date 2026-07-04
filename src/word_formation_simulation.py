@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from src.utils import *
+from utils import *
 
 class WordFormationSimulation:
     """
@@ -14,6 +14,7 @@ class WordFormationSimulation:
 
     """
     def __init__(self, n_objects, epsilon):
+       
         self.n_objects = n_objects
         self.epsilon = epsilon
 
@@ -63,7 +64,7 @@ class WordFormationSimulation:
         total_val = self._sum_values_up_to(active_lexicon_size)
         return total_val / adjusted_denominator
 
-    def run_simulation_and_plot(self):
+    def run_simulation_and_plot(self, plot=False):
 
         fig, axes = plt.subplots(1, 3, figsize=(16, 6))
         objects_range = np.arange(1, self.n_objects + 1)
@@ -128,4 +129,6 @@ class WordFormationSimulation:
 
         plt.tight_layout()
         save_plot(f"word_formation_simulation.png")
-        # plt.show()
+
+        if plot == True:
+            plt.show()
