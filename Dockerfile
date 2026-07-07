@@ -30,6 +30,6 @@ RUN mkdir -p /app/output
 
 CMD ["bash", "-lc", "\
 set -euxo pipefail; \
-python -m src.main; \
+python src/main.py; \
 quarto render /app/notebook/report.ipynb --to html --embed-resources --output-dir /app/output; \
 python -m sphinx -b html docs/source docs/build/html"]
