@@ -92,12 +92,7 @@ The Docker image contains:
 * Required Python dependencies
 * Quarto
 * Source code and report materials
-
-Additionally, documentation can be built using:
-
-```bash
-python -m sphinx -b html docs/source docs/build/html
-```
+* Sphinx Documentation
 
 Running the Docker container reproduces the simulation results without requiring any local installation of Python packages.
 
